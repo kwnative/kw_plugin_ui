@@ -1,0 +1,8 @@
+# Restart after changing enabled (0 or 1).
+id=ui
+library=kw_ui.dll
+abi=1
+enabled=1
+roles=rendered
+requires=
+after=
