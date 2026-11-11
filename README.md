@@ -1,5 +1,9 @@
 # kw_plugin_ui
 
+Licensed under **GPLv3**, with a game interoperability permission. See
+[LICENSING.md](LICENSING.md) for scope, source-distribution obligations and
+[third-party notices](THIRD_PARTY_NOTICES.md).
+
 Public headers are under `include/kwui/`, for example
 `#include <kwui/fast_mainmenu_api.h>`. Shared engine types use `kwengine/`;
 loader contracts use `kwf/`. No AI-plugin include dependency is introduced.
