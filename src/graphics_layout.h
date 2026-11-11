@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #ifndef KW_UI_GRAPHICS_LAYOUT_H
 #define KW_UI_GRAPHICS_LAYOUT_H
 #include <stddef.h>

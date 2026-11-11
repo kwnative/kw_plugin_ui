@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #ifndef KW_UI_INGAME_MENU_H
 #define KW_UI_INGAME_MENU_H
 #include <kwui/fast_mainmenu.h>

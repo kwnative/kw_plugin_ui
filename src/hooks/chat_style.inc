@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Match-only font scaling and outline. Shared native draw/string routines stay
  * stock for lobby, HUD, and other users. Included before the match draw hook. */
 #include <kwengine/engine_address.h>

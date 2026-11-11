@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Generated from fxaa.hlsl with vkd3d-compiler ps_3_0; no runtime compiler. */
 static const DWORD kw_fxaa_shader[] = {
     0xffff0300U, 0x0027fffeU, 0x42415443U, 0x0000001cU, 0x00000074U, 0xffff0300U, 0x00000002U, 0x0000001cU, 0x00000000U, 0x00000000U, 0x00000044U,

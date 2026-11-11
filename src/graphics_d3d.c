@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #define WIN32_LEAN_AND_MEAN
 #define COBJMACROS
 #include <windows.h>

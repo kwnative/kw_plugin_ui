@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #include "list_scroll.h"
 static struct kw_list_scroll_plan list_scroll_plan;
 static int list_scroll_ready;

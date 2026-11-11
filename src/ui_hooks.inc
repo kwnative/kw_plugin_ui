@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Rendered-only native UI runtime. The shared engine component owns discovery;
  * the framework owns every modified code/vtable range. No AI DLL is required. */
 #define KWUI_PLUGIN_RUNTIME

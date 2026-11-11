@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Compiled instruction signatures, validated against the three supplied KW images.
  * Reference numbers below are diagnostic labels, never candidate addresses.
  * Layout proof and all intermediate-width changes: docs/research/LAN_MAP_LIST_LIMITS_2026_10_17.md. */

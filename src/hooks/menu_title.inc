@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* UI-owned menu-title scaling hooks, included by the UI plugin runtime. */
 #ifndef KWUI_TITLE_FIXTURE
 #define KWENGINE_USE_RUNTIME_RESOLVER

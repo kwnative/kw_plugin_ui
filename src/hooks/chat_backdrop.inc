@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Stock KW 1.02 MessageDisplay composition, immediately before stock text.
  * Included after the bridge's validated trampoline and memory helpers.
  * Native addresses/ABIs and reproduction: MATCH_CHAT_BACKDROP_1_02.md. */

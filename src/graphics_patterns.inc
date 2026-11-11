@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Compiled code signatures; reference VAs are documentation labels only. */
 static const struct kw_graphics_signature kw_graphics_signatures[] = {
     {"count",

@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #include "graphics_layout.h"
 #include "graphics_policy.h"
 #include "graphics_d3d.h"

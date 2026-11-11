@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* KW's W3DFontLibrary::loadFontData rejects integer sizes above 100.
  * Execute a private copy of its validated prefix with a 512-point comparison
  * for every font loaded through this library while scaling is enabled. All native

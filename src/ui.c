@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Native presentation plugin; AI/controller services are optional. */
 #define KWENGINE_USE_RUNTIME_RESOLVER
 #define WIN32_LEAN_AND_MEAN

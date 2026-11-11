@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Native list coordinates occupy four-byte aligned slots. Retail uses only
  * the low half of viewport_height (+3c) and scroll_position (+44); the high
  * halves are padding, before the existing fields at +40/+48. Widen every

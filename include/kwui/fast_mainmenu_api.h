@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #ifndef KWUI_FAST_MAINMENU_API_H
 #define KWUI_FAST_MAINMENU_API_H
 #include <kwengine/native_status.h>

@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Optional asset-data adjustment; stock archives and global clocks are untouched.
  * A resource-read observer makes the startup INI switch automatic. */
 #include <kwui/fast_mainmenu.h>

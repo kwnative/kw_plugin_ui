@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #ifndef KWUI_MENU_TITLE_SCALING_H
 #define KWUI_MENU_TITLE_SCALING_H
 #include <stdint.h>

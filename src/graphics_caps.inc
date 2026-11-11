@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 /* Native D3D9 capability queries; included by the backend and its API fixture. */
 static int sample_supported(IDirect3D9 *d, UINT adapter, D3DFORMAT adapter_format, D3DFORMAT colour, D3DFORMAT depth, BOOL windowed, unsigned samples)
 {

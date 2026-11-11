@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: 2026 N.Leiten
+ * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
+ */
 #ifndef KWUI_CHAT_STYLE_H
 #define KWUI_CHAT_STYLE_H
 #include <stdint.h>
