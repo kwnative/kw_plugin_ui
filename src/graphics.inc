@@ -281,12 +281,14 @@ static void graphics_hud_hook(void)
             const struct kwthreading_presentation_api *api = graphics_worker_api();
             uint32_t offered = KWTHREADING_PRESENTATION_SERIAL;
             if (api) {
-                struct kwthreading_presentation_task task = {
-                    sizeof(task), KWTHREADING_PRESENTATION_FXAA, graphics_cached_device.device, graphics_worker_run, 0, 0};
+                struct kwthreading_presentation_task_dependencies submission = {
+                    {sizeof(submission), KWTHREADING_PRESENTATION_FXAA, graphics_cached_device.device, graphics_worker_run, 0, 0},
+                    KWTHREADING_PRESENTATION_NO_VERTEX_INDEX_ACCESS};
+                struct kwthreading_presentation_task *task=&submission.task;
                 uint16_t cw;
-                __asm__ volatile("fnstcw %0\n\tstmxcsr %1" : "=m"(cw), "=m"(task.mxcsr));
-                task.cw = cw;
-                offered = api->queue(&task);
+                __asm__ volatile("fnstcw %0\n\tstmxcsr %1" : "=m"(cw), "=m"(task->mxcsr));
+                task->cw = cw;
+                offered = api->queue(task);
             }
             if (offered != KWTHREADING_PRESENTATION_QUEUED)
                 graphics_fxaa_result(kw_graphics_fxaa_draw(graphics_cached_device.device));

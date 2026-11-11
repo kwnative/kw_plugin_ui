@@ -7,17 +7,32 @@ include $(KWMOD_SDK_ROOT)/mk/plugin.mk
 # Compile optional cooperation for bundles without enabling the provider.
 THREADING_SDK_ROOT ?= $(abspath $(REPO_ROOT)/../kw_plugin_threading)
 THREADING_INTEGRATION_HEADER := $(THREADING_SDK_ROOT)/include/kwthreading/integration/presentation_worker.h
+THREADING_AUTODETECT := $(if $(filter undefined,$(origin WITH_THREADING_INTEGRATION)),1,0)
 WITH_THREADING_INTEGRATION ?= $(call kwmod_bundle_integration_default,$(THREADING_INTEGRATION_HEADER),kw_plugin_threading)
+WITH_THREADING_INTEGRATION := $(WITH_THREADING_INTEGRATION)
 ifneq ($(WITH_THREADING_INTEGRATION),0)
 ifneq ($(WITH_THREADING_INTEGRATION),1)
 $(error WITH_THREADING_INTEGRATION must be 0 or 1)
 endif
 endif
-CPPFLAGS += -DWITH_THREADING_INTEGRATION=$(WITH_THREADING_INTEGRATION)
 ifeq ($(WITH_THREADING_INTEGRATION),1)
 ifeq ($(wildcard $(THREADING_INTEGRATION_HEADER)),)
 $(error Set THREADING_SDK_ROOT to the optional provider repository)
 endif
+THREADING_CONTRACT_SUPPORTED := $(shell $(WINDOWS_CC) -std=c11 -Werror -fsyntax-only \
+    -I"$(KWMOD_SDK_ROOT)/include" -I"$(THREADING_SDK_ROOT)/include" \
+    "$(REPO_ROOT)/tools/check_threading_contract.c" >/dev/null 2>&1 && printf 1 || printf 0)
+ifneq ($(THREADING_CONTRACT_SUPPORTED),1)
+ifeq ($(THREADING_AUTODETECT),1)
+WITH_THREADING_INTEGRATION := 0
+$(info kw_ui: older threading SDK detected; using serial presentation)
+else
+$(error The selected threading SDK lacks the presentation dependency contract; update it or set WITH_THREADING_INTEGRATION=0)
+endif
+endif
+endif
+CPPFLAGS += -DWITH_THREADING_INTEGRATION=$(WITH_THREADING_INTEGRATION)
+ifeq ($(WITH_THREADING_INTEGRATION),1)
 CPPFLAGS += -I"$(THREADING_SDK_ROOT)/include"
 endif
 INTEGRATION_SETTINGS := THREADING=$(WITH_THREADING_INTEGRATION):$(THREADING_SDK_ROOT)

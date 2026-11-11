@@ -4,6 +4,13 @@ Licensed under **GPLv3**, with a game interoperability permission. See
 [LICENSING.md](LICENSING.md) for scope, source-distribution obligations and
 [third-party notices](THIRD_PARTY_NOTICES.md).
 
+Optional threading cooperation requires a provider header with the presentation
+dependency contract (`kwthreading_presentation_task_dependencies` and
+`KWTHREADING_PRESENTATION_NO_VERTEX_INDEX_ACCESS`). Automatic bundle discovery
+falls back to ordinary serial presentation for an older header. Explicit
+`WITH_THREADING_INTEGRATION=1` requires the newer contract and reports a build
+error if it is unavailable. This does not enable the experimental provider.
+
 Public headers are under `include/kwui/`, for example
 `#include <kwui/fast_mainmenu_api.h>`. Shared engine types use `kwengine/`;
 loader contracts use `kwf/`. No AI-plugin include dependency is introduced.
