@@ -13,7 +13,7 @@ error if it is unavailable. This does not enable the experimental provider.
 
 Public headers are under `include/kwui/`, for example
 `#include <kwui/fast_mainmenu_api.h>`. Shared engine types use `kwengine/`;
-loader contracts use `kwf/`. No AI-plugin include dependency is introduced.
+loader contracts use `kwf/`.
 
 Rendered UI, chat, menu/list and graphics presentation.
 
@@ -23,11 +23,28 @@ Production implementation is under `src/`; supported/public or compatibility
 headers are under `include/`. Generated files go only to ignored `build/`:
 `build/bin` for DLLs/executables, `build/lib` for libraries, `build/obj` for
 objects/dependency files, `build/config` for copied configuration templates.
-Use GNU Make and x86 MinGW (`i686-w64-mingw32-gcc/g++/ar`).
+
+### Linux prerequisites
+
+Use Bash, GNU Make 4.3+, native GCC/G++ (C++17 for bundle staging), and the
+32-bit Windows MinGW-w64 toolchain (`i686-w64-mingw32-gcc`,
+`i686-w64-mingw32-g++`, `i686-w64-mingw32-ar`).
+For Debian/Ubuntu, install `build-essential mingw-w64`. Wine is only needed
+to run the game or Windows test executables. No game files are needed to compile.
+
+A checkout of **kw_modloader** is the required SDK dependency. Build it first:
 
 ```sh
-make -j4
+export KWMOD_SDK_ROOT=/path/to/kw_modloader
+make -C "$KWMOD_SDK_ROOT" -j2
+```
+
+Then, from this plugin's directory:
+
+```sh
+make -j2
 make sdk-paths
+make bundle
 ```
 
 For relocated checkouts set `KWMOD_SDK_ROOT=/path/to/kw_modloader`.
@@ -43,11 +60,38 @@ Override `BUNDLE_DIR=/path/to/staging` if needed. This is a plugin overlay,
 not a standalone loader installation. Developer variants are not included.
 Bundle generation replaces only previously staged, unmodified files and
 refuses an unowned or locally edited output directory. Do not point it at an
-installed game. See `kw_modloader/docs/BUNDLES.md` for composition and AI caveats.
+installed game. See the loader's `docs/BUNDLES.md` for composition details.
 
 Build and staging targets do not install into a game or overwrite user settings.
 Use matching loader/SDK artifacts and preserve customized INIs when installing.
 Runtime loading uses `.kwplugin` manifests; configuration uses `.ini` files.
+
+### Manual installation
+
+**kw_modloader must be installed for this plugin to load.** With the game closed,
+copy the loader's `build/bundle/` contents into the engine directory containing
+`cnc3ep1.dat` (normally `RetailExe/1.2`). Then copy this plugin's
+`build/bundle/` contents into that same directory, retaining the `plugins/`,
+`docs/` and `licenses/` layout. The runtime files are:
+
+```text
+RetailExe/1.2/
+  dinput8.dll
+  kw_runtime.dll
+  kw_engine.dll
+  plugins/
+    kw_ui.dll
+    kw_ui.kwplugin
+    kw_ui.ini
+```
+
+Preserve your customized INI when upgrading; merge new settings from the template.
+Check `enabled` in the manifest and restart the game after changing settings.
+There is no `make install` target or install-directory variable.
+`BUNDLE_DIR` selects a dedicated staging directory, never a live game directory.
+
+The current documented build host is Linux. Compiler overrides are retained for
+a future documented native Windows build; that workflow is not yet qualified.
 
 Standalone `make`/`all` is serial and requires no threading headers/repository.
 `bundle`/`stage` may compile optional rendering-worker cooperation when the
@@ -57,9 +101,8 @@ threading, so that cooperation stays off. Explicit
 `WITH_THREADING_INTEGRATION=0|1 THREADING_SDK_ROOT=/path/to/kw_plugin_threading`
 overrides automatic selection. Compiling cooperation does not bundle or enable
 the provider; absence at runtime retains serial rendering.
-UI configuration is owned by `kwui/config.h` and `src/config.c`, not the AI schema.
+UI configuration is owned by `kwui/config.h` and `src/config.c`.
 
 Menu-title scaling is implemented in `src/hooks/menu_title.inc`, included by
-`src/ui_hooks.inc`. The standalone DInput8 proxy/entry has been removed: this file
-contains UI hooks, not another game loader.
-Only `kw_modloader` supplies the DInput8 entry point.
+`src/ui_hooks.inc`. This plugin provides UI hooks. The DirectInput entry point
+is supplied by `kw_modloader`.

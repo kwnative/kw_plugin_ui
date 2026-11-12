@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
  */
 /* Rendered-only native UI runtime. The shared engine component owns discovery;
- * the framework owns every modified code/vtable range. No AI DLL is required. */
+ * the framework owns every modified code/vtable range. */
 #define KWUI_PLUGIN_RUNTIME
 #define KWUI_THISCALL __attribute__((thiscall))
 #define KWUI_FASTCALL __attribute__((fastcall))
@@ -61,8 +61,7 @@ static void *install_function_trampoline(unsigned char *entry, size_t length, ui
 {
     return install_function_trampoline_proven(entry, length, target, NULL);
 }
-/* Same complete x87/MXCSR preservation as the presentation probe, without
- * linking its observer, queue, writer or AI match-update callbacks. */
+/* Preserve native x87/MXCSR state across presentation hook callbacks. */
 #include <kwengine/hook_context.h>
 #define memcmp kwengine_memcmp
 #include "hooks/chat_backdrop.inc"

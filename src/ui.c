@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: 2026 N.Leiten
  * SPDX-License-Identifier: LicenseRef-KW-Game-Plugin
  */
-/* Native presentation plugin; AI/controller services are optional. */
+/* Native presentation plugin with independently owned UI configuration. */
 #define KWENGINE_USE_RUNTIME_RESOLVER
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -24,7 +24,7 @@ static uint32_t KWF_CALL prepare(const struct kwf_context *context)
         return KWF_UNSUPPORTED;
     ui_context = context;
     loader_module = (HMODULE)context->loader_module;
-    if (!kwengine_config_load(context, L"\\plugins\\kw_ui.ini", L"\\kwbot_host.ini", &ui_config, kwui_config_parse))
+    if (!kwengine_config_load(context, L"\\plugins\\kw_ui.ini", NULL, &ui_config, kwui_config_parse))
         return KWF_ERROR;
     if (!kwengine_client_bind(context)) {
         context->host->log(context->owner, "UI engine component or required resolver API unavailable");
